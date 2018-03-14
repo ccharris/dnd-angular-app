@@ -1,0 +1,25 @@
+<h1>Monsters</h1>
+<hr>
+<div id="monstersContainer">
+  <mat-card *ngFor="let monster of monsters" class="dndCard">
+    <mat-card-title>{{monster.name}}</mat-card-title>
+    <mat-card-actions><button mat-button routerLink="/monsters/details/{{monster.url}}">Details</button></mat-card-actions>
+  </mat-card>
+</div>
+<mat-grid-list cols="14" rowHeight="2:1" *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === 1}">
+        <button mat-button (click)="setPage(1)">First</button>
+    </mat-grid-tile>
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === 1}">
+        <button mat-button (click)="setPage(pager.currentPage - 1)">Previous</button>
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <button mat-button (click)="setPage(page)">{{page}}</button>
+    </mat-grid-tile>
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <button mat-button (click)="setPage(pager.currentPage + 1)">Next</button>
+    </mat-grid-tile>
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <button mat-button (click)="setPage(pager.totalPages)">Last</button>
+    </mat-grid-tile>
+</mat-grid-list>

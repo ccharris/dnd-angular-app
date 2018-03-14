@@ -1,0 +1,15 @@
+.dndCard {
+    text-align: center;
+    width: 150px;
+    margin: 5px;
+    
+}
+#racesContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+h1 {
+    padding-left: 8px;
+}

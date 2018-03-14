@@ -1,0 +1,16 @@
+.dndCard {
+    text-align: center;
+    width: 150px;
+    margin: 5px;
+    
+}
+#classesContainer {
+    display: flex;
+    flex-flow: row wrap;
+    /* This aligns items to the end line on main-axis */
+    justify-content: center;
+    align-content: center;
+}
+h1 {
+    padding-left: 8px;
+}

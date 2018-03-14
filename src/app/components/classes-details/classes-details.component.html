@@ -1,0 +1,39 @@
+<h1 id="classDetailsHeader" *ngIf="class">{{class.name}}</h1>
+<hr>
+<div id="classDetailsContainer" *ngIf="class">
+  <mat-card class="classDetailsSection">
+    <h3>Hit Die</h3>
+    <span>{{class.hit_die}}</span>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Proficiencies</h3>
+    <div *ngFor="let proficiency of class.proficiencies">
+      <span>{{proficiency.name}}</span>
+    </div>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Proficiency Choices</h3>
+    <div *ngFor="let proficiency of class.proficiency_choices">
+      <span>Choose {{proficiency.choose}} From:</span>
+      <ul>
+        <li *ngFor="let choice of proficiency.from">{{choice.name}}</li>
+      </ul>
+    </div>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Proficient Saving Throws</h3>
+    <ul>
+      <div *ngFor="let throw of class.saving_throws">
+        <li>{{throw.name}}</li>
+      </div>
+    </ul>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Sub Classes</h3>
+    <div *ngFor="let subclass of class.subclasses">
+      <h4>{{subclass.name}}</h4>
+        <app-subclass-details [id]="subclass.url"></app-subclass-details>
+    </div>
+  </mat-card>
+
+</div>

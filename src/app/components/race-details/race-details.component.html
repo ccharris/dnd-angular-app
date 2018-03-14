@@ -1,0 +1,73 @@
+<h1 id="classDetailsHeader" *ngIf="race">{{race.name}}</h1>
+<hr>
+<div id="classDetailsContainer" *ngIf="race">
+  <mat-card class="classDetailsSection">
+    <h3>Age</h3>
+    <span>{{race.age}}</span>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Alignment</h3>
+    <span>{{race.name}}</span>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Size</h3>
+    <p>{{race.size}} - {{race.size_description}}</p>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Speed</h3>
+    <p>{{race.speed}}</p>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+      <h3>Ability Bonuses</h3>
+      <mat-list>
+        <mat-list-item *ngIf="race.ability_bonuses[0] > 0">Strength: {{race.ability_bonuses[0]}}</mat-list-item>
+        <mat-list-item *ngIf="race.ability_bonuses[1] > 0">Dexterity: {{race.ability_bonuses[1]}}</mat-list-item>
+        <mat-list-item *ngIf="race.ability_bonuses[2] > 0">Constitution: {{race.ability_bonuses[2]}}</mat-list-item>
+        <mat-list-item *ngIf="race.ability_bonuses[3] > 0">Intelligence: {{race.ability_bonuses[3]}}</mat-list-item>
+        <mat-list-item *ngIf="race.ability_bonuses[4] > 0">Wisdom: {{race.ability_bonuses[4]}}</mat-list-item>
+        <mat-list-item *ngIf="race.ability_bonuses[5] > 0">Charisma: {{race.ability_bonuses[5]}}</mat-list-item>
+      </mat-list>
+    </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Languages</h3>
+    <mat-list>
+      <div *ngFor="let language of race.languages">
+        <mat-list-item>{{language.name}}</mat-list-item>
+      </div>
+    </mat-list>
+    <p>{{race.language_desc}}</p>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Traits</h3>
+    <mat-list>
+      <div *ngFor="let trait of race.traits">
+        <mat-list-item>{{trait.name}}</mat-list-item>
+      </div>
+    </mat-list>
+  </mat-card>
+  <mat-card *ngIf="race.starting_proficiencies.length > 0" class="classDetailsSection">
+      <h3>Starting Proficiencies</h3>
+      <mat-list>
+        <div *ngFor="let proficiency of race.starting_proficiencies">
+          <mat-list-item>{{proficiency.name}}</mat-list-item>
+        </div>
+      </mat-list>
+    </mat-card>
+    <mat-card *ngIf="race.starting_proficiency_options.choose" class="classDetailsSection">
+        <h3>Starting Proficiency Options</h3>
+        <p>Choose {{race.starting_proficiency_options.choose}} of: </p>
+        <mat-list>
+          <div *ngFor="let proficiency of race.starting_proficiency_options.from">
+              <mat-list-item>{{proficiency.name}}</mat-list-item>
+          </div>
+        </mat-list>
+      </mat-card>
+  <mat-card *ngIf="race.subraces.length > 0" class="classDetailsSection">
+      <h3>Sub Races</h3>
+      <div *ngFor="let subrace of race.subraces">
+        <h4>{{subrace.name}}</h4>
+          <app-sub-race-details [id]="subrace.url"></app-sub-race-details>
+      </div>
+    </mat-card>
+
+</div>

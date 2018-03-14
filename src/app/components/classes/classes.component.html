@@ -1,0 +1,8 @@
+<h1>Classes</h1>
+<hr>
+<div id="classesContainer">
+  <mat-card *ngFor="let class of dataSource" class="dndCard">
+    <mat-card-title>{{class.name}}</mat-card-title>
+    <mat-card-actions><button mat-button routerLink="/classes/details/{{class.url}}">{{class.name}} Details</button></mat-card-actions>
+  </mat-card>
+</div>

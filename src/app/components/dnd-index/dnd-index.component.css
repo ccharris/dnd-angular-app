@@ -1,0 +1,6 @@
+.dndCard {
+    max-width: 32%;
+    float: left;
+    min-width: 32%;
+    margin: 2px; 
+}

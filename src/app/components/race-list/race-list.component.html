@@ -1,0 +1,8 @@
+<h1>Classes</h1>
+<hr>
+<div id="racesContainer">
+  <mat-card *ngFor="let race of races" class="dndCard">
+    <mat-card-title>{{race.name}}</mat-card-title>
+    <mat-card-actions><button mat-button routerLink="/races/details/{{race.url}}">{{race.name}} Details</button></mat-card-actions>
+  </mat-card>
+</div>
