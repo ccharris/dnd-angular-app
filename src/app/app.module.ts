@@ -18,7 +18,8 @@ import {
   MatTableModule,
   MatCardModule,
   MatListModule,
-  MatGridListModule
+  MatGridListModule,
+  MatAutocompleteModule
  } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -39,6 +40,8 @@ import { MonsterListComponent } from './components/monster-list/monster-list.com
 import { MonsterDetailsComponent } from './components/monster-details/monster-details.component'
 import { PagerService } from './services/page.service';
 import { firebaseConfig } from '../../firebase.js';
+import { SpellIndexComponent } from './components/spell-index/spell-index.component';
+import { SpellDetailsComponent } from './components/spell-details/spell-details.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -54,6 +57,10 @@ const routes = [
   { path: 'monsters', children: [
     {path: '', component: MonsterListComponent},
     {path: 'details/:id', component: MonsterDetailsComponent}
+  ]},
+  { path: 'spells', children: [
+    {path: '', component: SpellIndexComponent},
+    {path: 'details/:id', component: SpellDetailsComponent}
   ]},
   { path: '**', component: DndIndexComponent }
 ]
@@ -73,7 +80,9 @@ const routes = [
     RaceDetailsComponent,
     SubRaceDetailsComponent,
     MonsterListComponent,
-    MonsterDetailsComponent
+    MonsterDetailsComponent,
+    SpellIndexComponent,
+    SpellDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +100,7 @@ const routes = [
     MatCardModule,
     MatListModule,
     MatGridListModule,
+    MatAutocompleteModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule

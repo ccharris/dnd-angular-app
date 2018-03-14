@@ -4,91 +4,88 @@
   <mat-card class="classDetailsSection">
     <h3>Info</h3>
     <mat-list>
-      <mat-list-item>{{monster.size}} {{monster.alignment}} {{monster.type}}</mat-list-item>
-      <mat-list-item> CR: {{monster.challenge_rating}}</mat-list-item>
-      <mat-list-item> AC: {{monster.armor_class}}</mat-list-item>
+      <mat-list-item>{{monster.size}}, {{monster.alignment}}, {{monster.type}} {{monster.subtype}}</mat-list-item>
+      <mat-list-item> <b>CR:</b> &nbsp; {{monster.challenge_rating}}</mat-list-item>
+      <mat-list-item> <b>AC:</b> &nbsp;{{monster.armor_class}}</mat-list-item>
+      <mat-list-item> <b>HP:</b> &nbsp;{{monster.hit_points}}</mat-list-item>
+      <mat-list-item> <b>Hit Dice:</b> &nbsp;{{monster.hit_dice}}</mat-list-item>
+      <mat-list-item><h4>Senses:</h4></mat-list-item>
+      <mat-list-item>{{monster.senses}}</mat-list-item>
+      <mat-list-item><h4>Speaks:</h4></mat-list-item>
+      <mat-list-item>{{monster.languages}}</mat-list-item>
+      <mat-list-item><h4>Speed:</h4></mat-list-item>
+      <mat-list-item>{{monster.speed}}</mat-list-item>
     </mat-list>
   </mat-card>
   <mat-card class="classDetailsSection">
-    <h3>Basic Stats</h3>
+      <h3>Immunities, Vulnerabilities, &amp; Resistances</h3>
+      <mat-list>
+        <mat-list-item><h4>Condition Immunities:</h4></mat-list-item>
+        <mat-list-item>{{monster.condition_immunities || 'none'}}</mat-list-item>
+        <mat-list-item><h4>Damage Immunities:</h4></mat-list-item>
+        <mat-list-item>{{monster.damage_immunities || 'none'}}</mat-list-item>
+        <mat-list-item><h4>Damage Resistances:</h4></mat-list-item>
+        <mat-list-item>{{monster.damage_resistances || 'none'}}</mat-list-item>
+        <mat-list-item><h4>Damage Vulnerabilities:</h4></mat-list-item>
+        <mat-list-item>{{monster.damage_vulnerabilities|| 'none'}}</mat-list-item>
+      </mat-list>
+    </mat-card>
+    <mat-card *ngIf="monster.actions" class="classDetailsSection">
+      <h3>Actions</h3>
+      <div *ngFor="let action of monster.actions">
+        <p><b>{{action.name}}:</b> {{action.desc}} <b>Attack Bonus:</b> {{action.attack_bonus}}</p>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="monster.legendary_actions || monster.special_abilities"class="classDetailsSection">
+      <h3>Special Actions &amp; Abilities</h3>
+      <h4>Lengendary Actions</h4>
+      <div *ngFor="let action of monster.legendary_actions">
+        <p><b>{{action.name}}:</b> {{action.desc}} <b>Attack Bonus:</b> {{action.attack_bonus}}</p>
+      </div>
+      <h4>Special Abilities</h4>
+      <div *ngFor="let ability of monster.special_abilities">
+        <p><b>{{ability.name}}:</b> {{ability.desc}} <b>Attack Bonus:</b> {{ability.attack_bonus}}</p>
+      </div>
+    </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Basic Stats &amp; Modifiers</h3>
     <mat-list>
-      <mat-list-item>Charisma: {{monster.charisma || 10}}  Save Modifier: {{monster.charisma_save || Math.ceil((monster.charisma-10)/2) || 0}}</mat-list-item>
-      <mat-list-item>Dexterity: {{monster.dexterity || 10}} Save Modifier: {{monster.dexterity_save || Math.ceil((monster.dexterity-10)/2) || 0}}</mat-list-item>
-      <mat-list-item>Intelligence: {{monster.intelligence || 10}} Save Modifier: {{monster.intelligence_save || Math.ceil((monster.intelligence-10)/2) || 0}}</mat-list-item>
-      <mat-list-item>Strength: {{monster.strength || 10}} Save Modifier: {{monster.strength_save || Math.ceil((monster.strength-10)/2) || 0}}</mat-list-item>
-      <mat-list-item>Wisdom: {{monster.wisdom || 10}} Save Modifier: {{monster.wisdom_save || Math.ceil((monster.wisdom-10)/2) || 0}}</mat-list-item>
-      <mat-list-item>Constitution: {{monster.constitution || 10}} Save Modifier: {{monster.constitution_save || Math.ceil((monster.constitution-10)/2) || 0}}</mat-list-item>
+      <mat-list-item>Charisma: {{monster.charisma || 10}} </mat-list-item>
+      <mat-list-item>Save Modifier: {{monster.charisma_save || Math.ceil((monster.charisma-10)/2) || 0}}</mat-list-item>
+      <mat-list-item>Dexterity: {{monster.dexterity || 10}} </mat-list-item>
+      <mat-list-item>Save Modifier: {{monster.dexterity_save || Math.ceil((monster.dexterity-10)/2) || 0}}</mat-list-item>
+      <mat-list-item>Intelligence: {{monster.intelligence || 10}} </mat-list-item>
+      <mat-list-item>Save Modifier: {{monster.intelligence_save || Math.ceil((monster.intelligence-10)/2) || 0}}</mat-list-item>
+      <mat-list-item>Strength: {{monster.strength || 10}} </mat-list-item>
+      <mat-list-item>Save Modifier: {{monster.strength_save || Math.ceil((monster.strength-10)/2) || 0}}</mat-list-item>
+      <mat-list-item>Wisdom: {{monster.wisdom || 10}} </mat-list-item>
+      <mat-list-item>Save Modifier: {{monster.wisdom_save || Math.ceil((monster.wisdom-10)/2) || 0}}</mat-list-item>
+      <mat-list-item>Constitution: {{monster.constitution || 10}} </mat-list-item>
+      <mat-list-item>Save Modifier: {{monster.constitution_save || Math.ceil((monster.constitution-10)/2) || 0}}</mat-list-item>
     </mat-list>
   </mat-card>
   <mat-card class="classDetailsSection">
-    <h3>Other Stats</h3>
+    <h3>Other Stat Modifiers</h3>
     <mat-list>
       <mat-list-item>Acrobatics: {{monster.acrobatics || (Math.ceil((monster.dexterity-10)/2)) || 0 }}  </mat-list-item>
       <mat-list-item>Animal Handling: {{monster.animal_handling || (Math.ceil((monster.wisdom-10)/2)) || 0 }} </mat-list-item>
       <mat-list-item>Arcana: {{monster.arcana || (Math.ceil((monster.intelligence-10)/2)) || 0 }} </mat-list-item>
       <mat-list-item>Athletics: {{monster.athletics || (Math.ceil((monster.strength-10)/2)) || 0 }} </mat-list-item>
-   
+      <mat-list-item>Deception: {{monster.deception || (Math.ceil((monster.charisma-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>History: {{monster.history || (Math.ceil((monster.intelligence-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Insight: {{monster.insight || (Math.ceil((monster.wisdom-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Investigation: {{monster.investigation || (Math.ceil((monster.intelligence-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Medicine: {{monster.medicine || (Math.ceil((monster.wisdom-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Nature: {{monster.nature || (Math.ceil((monster.intelligence-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Perception: {{monster.perception || (Math.ceil((monster.wisdom-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Performance: {{monster.performance || (Math.ceil((monster.charisma-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Persuasion: {{monster.persuasion || (Math.ceil((monster.charisma-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Religion: {{monster.religion || (Math.ceil((monster.intelligence-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Sleight of Hand: {{monster.sleight_of_hand || (Math.ceil((monster.dexterity-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Stealth: {{monster.stealth || (Math.ceil((monster.dexterity-10)/2)) || 0 }} </mat-list-item>
+      <mat-list-item>Survival: {{monster.survival || (Math.ceil((monster.wisdom-10)/2)) || 0 }} </mat-list-item>
+      
     </mat-list>
   </mat-card>
-  <!-- <mat-card class="classDetailsSection">
-    <h3>Size</h3>
-    <p>{{monster.size}} - {{monster.size_description}}</p>
-  </mat-card>
-  <mat-card class="classDetailsSection">
-    <h3>Speed</h3>
-    <p>{{monster.speed}}</p>
-  </mat-card>
-  <mat-card class="classDetailsSection">
-      <h3>Ability Bonuses</h3>
-      <mat-list>
-        <mat-list-item *ngIf="monster.ability_bonuses[0] > 0">Strength: {{monster.ability_bonuses[0]}}</mat-list-item>
-        <mat-list-item *ngIf="monster.ability_bonuses[1] > 0">Dexterity: {{monster.ability_bonuses[1]}}</mat-list-item>
-        <mat-list-item *ngIf="monster.ability_bonuses[2] > 0">Constitution: {{monster.ability_bonuses[2]}}</mat-list-item>
-        <mat-list-item *ngIf="monster.ability_bonuses[3] > 0">Intelligence: {{monster.ability_bonuses[3]}}</mat-list-item>
-        <mat-list-item *ngIf="monster.ability_bonuses[4] > 0">Wisdom: {{monster.ability_bonuses[4]}}</mat-list-item>
-        <mat-list-item *ngIf="monster.ability_bonuses[5] > 0">Charisma: {{monster.ability_bonuses[5]}}</mat-list-item>
-      </mat-list>
-    </mat-card>
-  <mat-card class="classDetailsSection">
-    <h3>Languages</h3>
-    <mat-list>
-      <div *ngFor="let language of monster.languages">
-        <mat-list-item>{{language.name}}</mat-list-item>
-      </div>
-    </mat-list>
-    <p>{{monster.language_desc}}</p>
-  </mat-card>
-  <mat-card class="classDetailsSection">
-    <h3>Traits</h3>
-    <mat-list>
-      <div *ngFor="let trait of monster.traits">
-        <mat-list-item>{{trait.name}}</mat-list-item>
-      </div>
-    </mat-list>
-  </mat-card>
-  <mat-card *ngIf="monster.starting_proficiencies.length > 0" class="classDetailsSection">
-      <h3>Starting Proficiencies</h3>
-      <mat-list>
-        <div *ngFor="let proficiency of monster.starting_proficiencies">
-          <mat-list-item>{{proficiency.name}}</mat-list-item>
-        </div>
-      </mat-list>
-    </mat-card>
-    <mat-card *ngIf="monster.starting_proficiency_options.choose" class="classDetailsSection">
-        <h3>Starting Proficiency Options</h3>
-        <p>Choose {{monster.starting_proficiency_options.choose}} of: </p>
-        <mat-list>
-          <div *ngFor="let proficiency of monster.starting_proficiency_options.from">
-              <mat-list-item>{{proficiency.name}}</mat-list-item>
-          </div>
-        </mat-list>
-      </mat-card>
-  <mat-card *ngIf="monster.submonsters.length > 0" class="classDetailsSection">
-      <h3>Sub monsters</h3>
-      <div *ngFor="let submonster of monster.submonsters">
-        <h4>{{submonster.name}}</h4>
-          <app-sub-monster-details [id]="submonster.url"></app-sub-monster-details>
-      </div>
-    </mat-card> -->
 
 </div>

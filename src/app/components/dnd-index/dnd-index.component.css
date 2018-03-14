@@ -1,6 +1,14 @@
 .dndCard {
-    max-width: 32%;
-    float: left;
-    min-width: 32%;
+    width: 29%;
     margin: 2px; 
+}
+#dndCardContainer{
+    display: flex;
+    flex-flow: row wrap;
+    /* This aligns items to the end line on main-axis */
+    justify-content: center;
+    align-content: center;
+}
+#dndHeaderContainer{
+    margin-left: 8px;
 }

@@ -1,5 +1,16 @@
 <h1>Monsters</h1>
 <hr>
+<form class="search-form">
+  <mat-form-field class="example-full-width">
+    <input #myInput type="text" placeholder="Search for a Monster" aria-label="String" matInput [formControl]="myControl" [matAutocomplete]="auto" (input)="filterItem(myInput.value)">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+  
 <div id="monstersContainer">
   <mat-card *ngFor="let monster of monsters" class="dndCard">
     <mat-card-title>{{monster.name}}</mat-card-title>
