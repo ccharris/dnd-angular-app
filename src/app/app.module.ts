@@ -58,14 +58,6 @@ const routes = [
   { path: '**', component: DndIndexComponent }
 ]
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBQyLb-9TEQVB_6xqeMQL5u8QM65ufI_h4",
-//   authDomain: "dnd-app-1ff0f.firebaseapp.com",
-//   databaseURL: "https://dnd-app-1ff0f.firebaseio.com",
-//   projectId: "dnd-app-1ff0f",
-//   storageBucket: "dnd-app-1ff0f.appspot.com",
-//   messagingSenderId: "504162239838"
-// }
 
 @NgModule({
   declarations: [
