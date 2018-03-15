@@ -1,0 +1,39 @@
+<h1 id="classDetailsHeader" *ngIf="equipment">{{equipment.name}}</h1>
+<hr>
+<div id="classDetailsContainer" *ngIf="equipment">
+  <mat-card *ngIf="equipment.desc" class="classDetailsSection">
+    <h3>Description</h3>
+    <mat-list>
+      <mat-list-item></mat-list-item>
+      <span *ngFor="let desc of equipment.desc">
+        <mat-list-item>{{desc}}</mat-list-item>
+        <mat-list-item></mat-list-item>
+      </span>
+      <mat-list-item></mat-list-item>
+    </mat-list>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Cost</h3>
+    <mat-list>
+      <mat-list-item>{{equipment.cost.quantity}} {{equipment.cost.unit}}</mat-list-item>
+    </mat-list>
+    <h3>Category</h3>
+    <mat-list>
+      <mat-list-item>{{equipment.equipment_category}}</mat-list-item>
+      <mat-list-item *ngIf="equipment.gear_category">{{equipment.gear_category}}</mat-list-item>
+      <mat-list-item *ngIf="equipment.category_range">{{equipment.category_range}}</mat-list-item>
+    </mat-list>
+    <h3 *ngIf="equipment.properties">Properties</h3>
+    <mat-list *ngIf="equipment.properties">
+      <mat-list-item *ngFor="let prop of equipment.properties">{{prop.name}} </mat-list-item> 
+    </mat-list>
+  </mat-card>
+  <mat-card *ngIf="equipment.damage" class="classDetailsSection">
+    <h3>Damage</h3>
+    <mat-list>
+      <mat-list-item>{{equipment.damage.dice_count}}d{{equipment.damage.dice_value}} {{equipment.damage.damage_type.name}}</mat-list-item>
+      <mat-list-item *ngIf="equipment.range">Range: {{equipment.range.normal}}</mat-list-item>
+      <mat-list-item *ngIf="equipment.throw_range">Throw Range: {{equipment.throw_range.normal}}/{{equipment.throw_range.long}}</mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>

@@ -1,0 +1,15 @@
+#classDetailsContainer {
+    display: flex;
+    flex-flow: row wrap;
+    /* This aligns items to the end line on main-axis */
+    justify-content: center;
+    align-content: center;
+}
+.classDetailsSection{
+    width: 20%;
+    min-width: 300px;
+    margin: 8px;
+}
+#classDetailsHeader {
+    margin-left: 8px;
+}

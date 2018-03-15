@@ -42,6 +42,8 @@ import { PagerService } from './services/page.service';
 import { firebaseConfig } from '../../firebase.js';
 import { SpellIndexComponent } from './components/spell-index/spell-index.component';
 import { SpellDetailsComponent } from './components/spell-details/spell-details.component';
+import { EquipmentIndexComponent } from './components/equipment-index/equipment-index.component';
+import { EquipmentDetailsComponent } from './components/equipment-details/equipment-details.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -61,6 +63,10 @@ const routes = [
   { path: 'spells', children: [
     {path: '', component: SpellIndexComponent},
     {path: 'details/:id', component: SpellDetailsComponent}
+  ]},
+  { path: 'equipment', children: [
+    {path: '', component: EquipmentIndexComponent},
+    {path: 'details/:id', component: EquipmentDetailsComponent}
   ]},
   { path: '**', component: DndIndexComponent }
 ]
@@ -82,7 +88,9 @@ const routes = [
     MonsterListComponent,
     MonsterDetailsComponent,
     SpellIndexComponent,
-    SpellDetailsComponent
+    SpellDetailsComponent,
+    EquipmentIndexComponent,
+    EquipmentDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,37 @@
+<h1>Equipment</h1>
+<hr>
+<form class="search-form">
+  <mat-form-field class="example-full-width">
+    <input #myInput type="text" placeholder="Search for equipment" aria-label="String" matInput [formControl]="myControl" [matAutocomplete]="auto" (input)="filterItem(myInput.value)">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+  
+<div id="equipsContainer">
+  <mat-card *ngFor="let equip of equipment" class="dndCard">
+    <mat-card-title>{{equip.name}}</mat-card-title>
+    <mat-card-content>{{equip.category_range}}</mat-card-content>
+    <mat-card-actions><button mat-button routerLink="/equipment/details/{{equip.url}}">Details</button></mat-card-actions>
+  </mat-card>
+</div>
+<mat-grid-list cols="14" rowHeight="2:1" *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === 1}">
+        <button mat-button (click)="setPage(1)">First</button>
+    </mat-grid-tile>
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === 1}">
+        <button mat-button (click)="setPage(pager.currentPage - 1)">Previous</button>
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <button mat-button (click)="setPage(page)">{{page}}</button>
+    </mat-grid-tile>
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <button mat-button (click)="setPage(pager.currentPage + 1)">Next</button>
+    </mat-grid-tile>
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <button mat-button (click)="setPage(pager.totalPages)">Last</button>
+    </mat-grid-tile>
+</mat-grid-list>
