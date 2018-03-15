@@ -41,7 +41,6 @@ export class SpellIndexComponent implements OnInit {
 
     // get current page of items
     this.spells = this.filteredItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    console.log('spell', this.spells)
   }
 
   filter(val: string): string[] {
@@ -51,14 +50,11 @@ export class SpellIndexComponent implements OnInit {
   
   filterItem(value){
     this.filteredItems = this.allItems.filter(spell => spell.name.toLowerCase().includes(value.toLowerCase()))
-    console.log(this.filteredItems)
-  
     this.setPage(1)
  }
 
   ngOnInit() {
     this._dndService.getSpells().subscribe((spellList: any[]) => {
-      console.log(spellList)
       let results = spellList[0].map((spellItem, index) => {
         if(index <= 8){
           return ({

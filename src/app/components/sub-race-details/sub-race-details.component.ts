@@ -18,7 +18,6 @@ export class SubRaceDetailsComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe(routeData => {
       this._dndService.getSubRace(this.id).subscribe((subrace: Subrace) => {
         this.subrace = subrace;
-        console.log(subrace);
       })
     })
   }

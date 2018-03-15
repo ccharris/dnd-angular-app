@@ -42,7 +42,6 @@ export class MonsterListComponent implements OnInit {
 
     // get current page of items
     this.monsters = this.filteredItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    console.log('monster', this.monsters)
   }
 
   filter(val: string): string[] {
@@ -51,17 +50,13 @@ export class MonsterListComponent implements OnInit {
   }
   
   filterItem(value){
-    this.filteredItems = this.allItems.filter(monster => monster.name.toLowerCase().includes(value.toLowerCase()))
-    console.log(this.filteredItems)
-  
+    this.filteredItems = this.allItems.filter(monster => monster.name.toLowerCase().includes(value.toLowerCase())) 
     this.setPage(1)
  }
 
   ngOnInit() {
     
     this._dndService.getMonsters().subscribe((monsterList: any[]) => {
-      console.log(monsterList)
-      
       let results = monsterList[0].map((monsterItem, index) => {
         if(index <= 8){
           return ({

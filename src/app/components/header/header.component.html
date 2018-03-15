@@ -2,8 +2,13 @@
   <span id="dndImg" routerLink='/'><img width="auto" height="53" alt="DND Logo" src="../../assets/dnd.png"></span>
   <span class="example-fill-remaining-space"></span>
   <span *ngIf="!authService.isLoggedIn">
-      <button mat-button routerLink='/register'>Register</button>
-      <button mat-button routerLink='/login'>Login</button>
+    <button mat-button routerLink='/classes'>Classes</button>
+    <button mat-button routerLink='/races'>Races</button>
+    <button mat-button routerLink='/spells'>Spells</button>
+    <button mat-button routerLink='/monsters'>Monsters</button>
+    <button mat-button routerLink='/equipment'>Equipment</button>
+    <button mat-button routerLink='/register'>Register</button>
+    <button mat-button routerLink='/login'>Login</button>
   </span>
   <span *ngIf="authService.isLoggedIn">
       <button mat-button routerLink='/classes'>Classes</button>

@@ -29,7 +29,7 @@ export class DndService {
   }
 
   getClass(id: string): Observable<Object>{
-    return this.specificClass = this.afd.object(`/0/classes/${id}`).valueChanges()
+    return this.specificClass = this.afd.object(`/0/monsters/${id}`).valueChanges()
   }
 
   getSubClass(id: string): Observable<Object>{

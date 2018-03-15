@@ -18,7 +18,6 @@ export class MonsterDetailsComponent implements OnInit {
     this.Math = Math;
     this._activatedRoute.paramMap.subscribe(routeData => {
       this._dndService.getMonster(routeData.get('id')).subscribe((singleMonster: Monster) => {
-        console.log(singleMonster)
         this.monster = singleMonster;
       })
     })

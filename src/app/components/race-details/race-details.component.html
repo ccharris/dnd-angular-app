@@ -37,7 +37,7 @@
     </mat-list>
     <p>{{race.language_desc}}</p>
   </mat-card>
-  <mat-card class="classDetailsSection">
+  <mat-card *ngIf="race.traits.length > 0" class="classDetailsSection">
     <h3>Traits</h3>
     <mat-list>
       <div *ngFor="let trait of race.traits">

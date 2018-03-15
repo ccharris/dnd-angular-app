@@ -16,7 +16,6 @@ export class EquipmentDetailsComponent implements OnInit {
   ngOnInit() {
     this._activatedRoute.paramMap.subscribe(routeData => {
       this._dndService.getEquipment(routeData.get('id')).subscribe((singleEquipment: Equipment) => {
-        console.log(singleEquipment)
         this.equipment = singleEquipment;
       })
     })

@@ -45,11 +45,12 @@ import { SpellDetailsComponent } from './components/spell-details/spell-details.
 import { EquipmentIndexComponent } from './components/equipment-index/equipment-index.component';
 import { EquipmentDetailsComponent } from './components/equipment-details/equipment-details.component';
 
+
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'classes', children: [
-    {path: '', component: ClassesComponent},
+    {path: '', component: ClassesComponent },
     {path: 'details/:id', component: ClassesDetailsComponent}
   ]},
   { path: 'races', children: [

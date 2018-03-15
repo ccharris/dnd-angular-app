@@ -17,7 +17,6 @@ export class SubclassDetailsComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe(routeData => {
       this._dndService.getSubClass(routeData.get('id')).subscribe((subclass: Subclass) => {
         this.subclass = subclass;
-        console.log(subclass);
       })
     })
   }

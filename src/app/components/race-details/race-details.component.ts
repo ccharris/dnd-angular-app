@@ -16,7 +16,6 @@ export class RaceDetailsComponent implements OnInit {
   ngOnInit() {
     this._activatedRoute.paramMap.subscribe(routeData => {
       this._dndService.getRace(routeData.get('id')).subscribe((singleRace: Race) => {
-        console.log(singleRace)
           return (
             this.race = {
               name: singleRace.name,

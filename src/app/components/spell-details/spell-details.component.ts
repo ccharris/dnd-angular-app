@@ -17,7 +17,6 @@ export class SpellDetailsComponent implements OnInit {
     this.Math = Math;
     this._activatedRoute.paramMap.subscribe(routeData => {
       this._dndService.getSpell(routeData.get('id')).subscribe((singleSpell: Spell) => {
-        console.log(singleSpell)
         this.spell = singleSpell;
       })
     })

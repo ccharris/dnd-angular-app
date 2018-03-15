@@ -49,15 +49,12 @@ export class EquipmentIndexComponent implements OnInit {
   }
   
   filterItem(value){
-    this.filteredItems = this.allItems.filter(equipment => equipment.name.toLowerCase().includes(value.toLowerCase()))
-    console.log(this.filteredItems)
-  
+    this.filteredItems = this.allItems.filter(equipment => equipment.name.toLowerCase().includes(value.toLowerCase())) 
     this.setPage(1)
  }
 
   ngOnInit() {
     this._dndService.getEquipmentList().subscribe((equipmentList: any[]) => {
-      console.log(equipmentList)
       let results = equipmentList[0].map((equipmentItem, index) => {
         if(index <= 8){
           return ({

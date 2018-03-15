@@ -17,7 +17,6 @@ export class ClassesDetailsComponent implements OnInit {
   ngOnInit() {
     this._activatedRoute.paramMap.subscribe(routeData => {
       this._dndService.getClass(routeData.get('id')).subscribe((singleClass: Class) => {
-        console.log(singleClass)
         if(singleClass.name === 'Sorceror' || 'Warlock' || 'Wizard'){
           return (
             this.class = {
