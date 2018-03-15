@@ -1,3 +1,48 @@
-<p>
-  spell-details works!
-</p>
+<h1 id="classDetailsHeader" *ngIf="spell">{{spell.name}}</h1>
+<hr>
+<div id="classDetailsContainer" *ngIf="spell">
+  <mat-card class="classDetailsSection">
+    <h3>Description</h3>
+    <mat-list>
+      <mat-list-item></mat-list-item>
+      <mat-list-item></mat-list-item>
+      <mat-list-item>{{spell.desc[0]}}</mat-list-item>
+      <mat-list-item></mat-list-item>
+      <mat-list-item></mat-list-item>
+    </mat-list>
+  </mat-card>
+  <mat-card class="classDetailsSection">
+      <h3>Spell Level Info</h3>
+      <mat-list>
+        <mat-list-item>Casting Time: {{spell.casting_time}}</mat-list-item>
+        <mat-list-item>Duration: {{spell.duration}}</mat-list-item>
+        <mat-list-item>Spell Level: {{spell.level}}</mat-list-item>
+        <mat-list-item *ngIf="spell.higher_levels">At Higher Levels: {{spell.higher_level[0]}}</mat-list-item>
+      </mat-list>
+    </mat-card>
+  <mat-card class="classDetailsSection">
+      <h3>School &amp; Casting Info</h3>
+      <mat-list>
+        <mat-list-item>School: {{spell.school}}</mat-list-item>
+        <mat-list-item>Requires Concentration? {{spell.concentration}}</mat-list-item>
+        <mat-list-item>Requires Ritual? {{spell.ritual}}</mat-list-item>
+        <mat-list-item>Material: {{spell.material}}</mat-list-item>
+        <mat-list-item>Components: &nbsp;
+          <span *ngFor="let component of spell.components">
+            {{component}} &nbsp;
+          </span>
+        </mat-list-item>
+        </mat-list>
+    </mat-card>
+  <mat-card class="classDetailsSection">
+    <h3>Classes &amp; Subclasses</h3>
+    <mat-list>
+      <span *ngFor="let class of spell.classes">
+        <mat-list-item>{{class.name}}</mat-list-item>
+      </span>
+      <span *ngFor="let subclass of spell.subclasses">
+        <mat-list-item>{{subclass.name}}</mat-list-item>
+      </span> 
+    </mat-list>
+  </mat-card>
+</div>

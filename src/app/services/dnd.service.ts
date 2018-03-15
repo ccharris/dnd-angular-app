@@ -15,6 +15,8 @@ export class DndService {
   specificRace: Observable<Object>;
   allMonsters: Observable<Object>;
   specificMonster: Observable<Object>;
+  allSpells: Observable<Object>;
+  specificSpell: Observable<Object>;
 
   baseApiUrl = 'http://www.dnd5eapi.co/api/';
 
@@ -50,5 +52,13 @@ export class DndService {
 
   getMonster(id: string){
     return this.specificRace = this.afd.object(`/1/monsters/${id}`).valueChanges()
+  }
+
+  getSpells(){
+    return this.allSpells = this.afd.list('/3').valueChanges()
+  }
+
+  getSpell(id: string){
+    return this.specificSpell = this.afd.object(`/3/spells/${id}`).valueChanges()
   }
 }

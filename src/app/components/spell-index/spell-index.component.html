@@ -1,3 +1,36 @@
-<p>
-  spell-index works!
-</p>
+<h1>Spells</h1>
+<hr>
+<form class="search-form">
+  <mat-form-field class="example-full-width">
+    <input #myInput type="text" placeholder="Search for a spell" aria-label="String" matInput [formControl]="myControl" [matAutocomplete]="auto" (input)="filterItem(myInput.value)">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+  
+<div id="spellsContainer">
+  <mat-card *ngFor="let spell of spells" class="dndCard">
+    <mat-card-title>{{spell.name}}</mat-card-title>
+    <mat-card-actions><button mat-button routerLink="/spells/details/{{spell.url}}">Details</button></mat-card-actions>
+  </mat-card>
+</div>
+<mat-grid-list cols="14" rowHeight="2:1" *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === 1}">
+        <button mat-button (click)="setPage(1)">First</button>
+    </mat-grid-tile>
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === 1}">
+        <button mat-button (click)="setPage(pager.currentPage - 1)">Previous</button>
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <button mat-button (click)="setPage(page)">{{page}}</button>
+    </mat-grid-tile>
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <button mat-button (click)="setPage(pager.currentPage + 1)">Next</button>
+    </mat-grid-tile>
+    <mat-grid-tile [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <button mat-button (click)="setPage(pager.totalPages)">Last</button>
+    </mat-grid-tile>
+</mat-grid-list>
