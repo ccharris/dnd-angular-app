@@ -59,24 +59,24 @@ export class MonsterListComponent implements OnInit {
 
   ngOnInit() {
     
-    this._dndService.getMonsters().subscribe((monsterList: MonsterResults) => {
+    this._dndService.getMonsters().subscribe((monsterList: any[]) => {
       console.log(monsterList)
       
-      let results = monsterList.results.map((monsterItem, index) => {
+      let results = monsterList[0].map((monsterItem, index) => {
         if(index <= 8){
           return ({
             name: monsterItem.name,
-            url: monsterItem.url.slice(-1) 
+            url: (Number(monsterItem.url.slice(-1)) - 1) 
           })
         } else if (index <= 98){
           return ({
             name: monsterItem.name,
-            url: monsterItem.url.slice(-2) 
+            url: (Number(monsterItem.url.slice(-2)) -1 )
           })
         } else {
           return ({
             name: monsterItem.name,
-            url: monsterItem.url.slice(-3) 
+            url: (Number(monsterItem.url.slice(-3)) - 1) 
           })
         }
         

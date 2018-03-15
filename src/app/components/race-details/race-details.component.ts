@@ -27,18 +27,18 @@ export class RaceDetailsComponent implements OnInit {
               speed: singleRace.speed,
               languages: singleRace.languages,
               language_desc: singleRace.language_desc,
-              traits: singleRace.traits,
-              ability_bonuses: singleRace.ability_bonuses,
-              starting_proficiencies: singleRace.starting_proficiencies,
+              traits: singleRace.traits || [],
+              ability_bonuses: singleRace.ability_bonuses || {},
+              starting_proficiencies: singleRace.starting_proficiencies || {},
               starting_proficiency_options: singleRace.starting_proficiency_options || {},
-              subraces: singleRace.subraces.map((subrace: Subrace) => {
+              subraces: singleRace.subraces? singleRace.subraces.map((subrace: Subrace) => {
                 return(
                   {
                     name: subrace.name,
-                    url: subrace.url.slice(-1)
+                    url: (Number(subrace.url.slice(-1)) - 1)
                   }
                 )
-              })
+              }) : {}
           }
         )
       })

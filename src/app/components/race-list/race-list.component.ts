@@ -14,21 +14,15 @@ export class RaceListComponent implements OnInit {
   constructor(private _dndService: DndService) { }
 
   ngOnInit() {
-    this._dndService.getRaces().subscribe((raceList: RaceResults) => {
-      console.log(raceList)
-      let results = raceList.results.map(raceItem => {
+    this._dndService.getRaces().subscribe((raceList: any[]) => {
+      let results = raceList[0].map(raceItem => {
         return ({
           name: raceItem.name,
-          url: raceItem.url.slice(-1) 
+          url: (Number(raceItem.url.slice(-1)) - 1)
         })
       })
       this.races = results;
     })
   }
 
-}
-
-interface RaceResults {
-  count: number;
-  results: RaceList[];
 }

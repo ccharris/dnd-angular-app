@@ -15,19 +15,18 @@ export class ClassesComponent implements OnInit {
   constructor(private _dndService: DndService) { }
 
   ngOnInit() {
-    this._dndService.getClasses().subscribe((classList: ClassResults) => {
-      let results = classList.results.map(classItem => {
-        
-          if(classItem.name === 'Sorceror' || 'Warlock' || 'Wizard'){
+    let classList = this._dndService.getClasses().subscribe((classList) => {
+      let results = classList[0].map(classItem => {  
+          if(classItem.name === 'Sorcerer' || classItem.name === 'Warlock' || classItem.name === 'Wizard'){
             return ({
               name: classItem.name,
-              url: classItem.url.slice(-2) 
+              url: (Number(classItem.url.slice(-2)) - 1) 
             })
           }
           else{
             return ({
               name: classItem.name,
-              url: classItem.url.slice(-1) 
+              url: (Number(classItem.url.slice(-1)) - 1) 
             })
           }
       })
